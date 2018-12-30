@@ -24,7 +24,6 @@ var config = {
     }
 };
 
-
 // this task will start the local dev server
 gulp.task("connect", function () {
     connect.server({
