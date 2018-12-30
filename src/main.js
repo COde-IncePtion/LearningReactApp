@@ -1,3 +1,4 @@
+$ = jquery = require('jquery');
 var React = require('react');
 var HomePage = require('./components/homePage');
 
