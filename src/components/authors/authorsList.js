@@ -1,0 +1,31 @@
+var React = require("react");
+
+var AuthorsList = React.createClass({
+
+    render : function () {
+        function createAuthorRow(author) {
+            return (
+                <tr key={author.id}>
+                    <td><a href={'#authors/'+author.id}>{author.id}</a></td>
+                    <td>{author.firstName}</td>
+                </tr>
+            );
+        };
+
+        return (
+            <div>
+                <table className='table'>
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </thead>
+                    <tbody>
+                        {this.props.authors.map(createAuthorRow, this)}
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
+});
+
+module.exports = AuthorsList;
