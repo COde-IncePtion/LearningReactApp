@@ -3,6 +3,10 @@ var AddAuthorPage = require('./addAuthorPage');
 var AuthorApi = require('../../api/authorsApi');
 var Router = require('react-router');
 
+var Toastr = require('toastr');
+Toastr.options.timeOut = 1000;
+
+
 var ManageAuthors = React.createClass({
         mixins:[
             Router.Navigation
@@ -26,6 +30,7 @@ var ManageAuthors = React.createClass({
         handleOnSave : function(event){
             event.preventDefault(); // to stop default browser behaviour
             AuthorApi.addAuthor(this.state.author);
+            Toastr.success('Author saved successfully');
             this.transitionTo('authors');
         },
         render: function () {

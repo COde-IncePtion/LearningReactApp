@@ -20,7 +20,8 @@ var config = {
         css: [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-            './src/style.scss'
+            './src/style.scss',
+            'node_modules/toastr/toastr.scss'
         ]
     }
 };
