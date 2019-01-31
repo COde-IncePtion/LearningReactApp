@@ -18,7 +18,7 @@ var AddAuthorPage = React.createClass({
                                     value={this.props.author.lastName}
                                     onChange={this.props.onChange}/>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary" onClick={this.props.onSave}>Submit</button>
                     </form>
                 </div>
             );

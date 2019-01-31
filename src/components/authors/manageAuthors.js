@@ -1,7 +1,12 @@
 var React = require('react');
 var AddAuthorPage = require('./addAuthorPage');
+var AuthorApi = require('../../api/authorsApi');
+var Router = require('react-router');
 
 var ManageAuthors = React.createClass({
+        mixins:[
+            Router.Navigation
+        ],
         getInitialState: function () {
             return {
                 author: {
@@ -15,11 +20,17 @@ var ManageAuthors = React.createClass({
             let field = event.target.name;
             let value = event.target.value;
             this.state.author[field]=value;
-            this.setState({author:this.state.author})
+            this.setState({author:this.state.author});
+        },
+
+        handleOnSave : function(event){
+            event.preventDefault(); // to stop default browser behaviour
+            AuthorApi.addAuthor(this.state.author);
+            this.transitionTo('authors');
         },
         render: function () {
             return (
-                <AddAuthorPage author={this.state.author} onChange={this.handleOnChange}/>
+                <AddAuthorPage author={this.state.author} onChange={this.handleOnChange} onSave={this.handleOnSave}/>
             );
         }
     }

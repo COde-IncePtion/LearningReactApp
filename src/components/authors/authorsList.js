@@ -2,15 +2,15 @@ var React = require("react");
 
 var AuthorsList = React.createClass({
     propTypes: {
-      authors: React.PropTypes.array.isRequired
+        authors: React.PropTypes.array.isRequired
     },
 
-    render : function () {
+    render: function () {
         function createAuthorRow(author) {
             return (
                 <tr key={author.id}>
-                    <td><a href={'#authors/'+author.id}>{author.id}</a></td>
-                    <td>{author.firstName}</td>
+                    <td><a href={'#authors/' + author.id}>{author.id}</a></td>
+                    <td>{author.firstName +' '+ author.lastName}</td>
                 </tr>
             );
         };
@@ -22,9 +22,9 @@ var AuthorsList = React.createClass({
                         <th>ID</th>
                         <th>Name</th>
                     </thead>
-                    <tbody>
+                        <tbody>
                         {this.props.authors.map(createAuthorRow, this)}
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         );
