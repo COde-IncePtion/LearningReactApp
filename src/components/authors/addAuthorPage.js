@@ -1,4 +1,5 @@
 var React = require('react');
+var Input = require('../common/input');
 
 var AddAuthorPage = React.createClass({
         render: function () {
@@ -6,18 +7,18 @@ var AddAuthorPage = React.createClass({
                 <div className='form-layout'>
                     <h1>Manage Author</h1>
                     <form>
-                        <div className="form-group">
-                            <label htmlFor="firstName">First Name</label>
-                            <input type="text" name="firstName" className="form-control" id="firstName"
-                                   value={this.props.author.firstName}
-                                    onChange={this.props.onChange}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" className="form-control" name="lastName" id="lastName"
-                                    value={this.props.author.lastName}
-                                    onChange={this.props.onChange}/>
-                        </div>
+                        <Input name='firstName'
+                               label='First Name'
+                               value={this.props.author.firstName}
+                               onChange={this.props.onChange}
+                               error={this.props.errors.firstName}/>
+
+                        <Input name='lastName'
+                               label='Last Name'
+                               value={this.props.author.lastName}
+                               onChange={this.props.onChange}
+                               error={this.props.errors.lastName}/>
+
                         <button type="submit" className="btn btn-primary" onClick={this.props.onSave}>Submit</button>
                     </form>
                 </div>
