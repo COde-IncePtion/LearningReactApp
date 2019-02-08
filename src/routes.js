@@ -12,6 +12,7 @@ var routes = (
     <Route name='about'  handler={require('./components/about/about')} />
     <NotFoundRoute handler={require('./components/common/pageNotFound')} />
     <Route name="addAuthor" path='author' handler={require('./components/authors/manageAuthors')}/>
+    <Route name="updateAuthor" path='author/:id' handler={require('./components/authors/manageAuthors')}/>
     </Route>
 );
 

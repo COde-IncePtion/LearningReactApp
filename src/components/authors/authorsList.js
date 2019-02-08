@@ -1,4 +1,5 @@
 var React = require("react");
+var Link = require('react-router').Link;
 
 var AuthorsList = React.createClass({
     propTypes: {
@@ -9,8 +10,8 @@ var AuthorsList = React.createClass({
         function createAuthorRow(author) {
             return (
                 <tr key={author.id}>
-                    <td><a href={'#authors/' + author.id}>{author.id}</a></td>
-                    <td>{author.firstName +' '+ author.lastName}</td>
+                    <td><Link to={'updateAuthor'} params={{id: author.id}}>{author.id}</Link></td>
+                    <td>{author.firstName + ' ' + author.lastName}</td>
                 </tr>
             );
         };

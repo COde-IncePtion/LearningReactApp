@@ -23,6 +23,13 @@ var ManageAuthors = React.createClass({
             };
         },
 
+        componentWillMount: function () {
+            var authorId = this.props.params.id;
+            if(authorId){
+                this.setState({author: AuthorApi.getAuthorById(authorId)});
+            }
+        },
+
         handleOnChange: function (event) {
             let field = event.target.name;
             let value = event.target.value;
@@ -51,7 +58,11 @@ var ManageAuthors = React.createClass({
 
             if (!this.isAuthorFormValid())
                 return;
-            AuthorApi.addAuthor(this.state.author);
+            
+            if(this.state.author.id)
+                AuthorApi.saveAuthor(this.state.author);
+            else
+                AuthorApi.addAuthor(this.state.author);
             Toastr.success('Author saved successfully');
             this.transitionTo('authors');
         },
