@@ -20,6 +20,7 @@ var AuthorAPi = {
     addAuthor: function (author) {
         author.id = Math.floor(Math.random() * 10 - 1);
         authors.push(author);
+        return author;
     },
 
     saveAuthor: function (authorToSave) {
