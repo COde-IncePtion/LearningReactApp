@@ -23,9 +23,10 @@ var AuthorAPi = {
         return author;
     },
 
-    saveAuthor: function (authorToSave) {
-        var indexToUpdate = authors.findIndex(author => author.id == authorToSave.id);
-        authors.splice(indexToUpdate, 1, authorToSave);
+    updateAuthor: function (authorToUpdate) {
+        var indexToUpdate = authors.findIndex(author => author.id == authorToUpdate.id);
+        authors.splice(indexToUpdate, 1, authorToUpdate);
+        return authors.find(author => author.id == authorToUpdate.id);
     },
 
     getAuthorById: function (id) {

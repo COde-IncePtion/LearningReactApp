@@ -4,6 +4,7 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
+var _authors = [];
 
 var AuthorStore = assign({}, EventEmitter.prototype, {
     addChangeListener: function (callback) {
@@ -16,5 +17,34 @@ var AuthorStore = assign({}, EventEmitter.prototype, {
 
     emitChange: function () {
         this.emit(CHANGE_EVENT);
+    },
+
+    getAllAuthors: function () {
+        return _authors;
+    },
+
+    getAuthorById: function (id) {
+        return _authors.find(author => author.id == id);
     }
 });
+
+Dispatcher.register(function (action) {
+    switch (action.actionType) {
+        case ActionTypes.CREATE_AUTHOR :
+            _authors.push(action.author);
+            AuthorStore.emitChange();
+            break;
+
+        case ActionTypes.UPDATE_AUTHOR :
+            let indexToUpdate = _authors.findIndex(author => author.id == action.author.id);
+            _authors.splice(indexToUpdate, 1, action.author);
+            break;
+
+        case ActionTypes.INITIALIZE_APP :
+            _authors = action.authors;
+            break;
+    }
+})
+
+
+module.exports = AuthorStore;

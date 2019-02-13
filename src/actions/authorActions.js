@@ -4,11 +4,22 @@ var ActionTypes = require('../constants/actionTypes');
 
 var AuthorActions = {
     createAuthor: function (author) {
-        var newAuthor = AuthorApi.addAuthor(author);
+        let newAuthor = AuthorApi.addAuthor(author);
 
         Dispatcher.dispatch({
-            type: ActionTypes.CREATE_AUTHOR,
+            actionType: ActionTypes.CREATE_AUTHOR,
             author: newAuthor
+        });
+    },
+
+    updateAuthor : function (authorToUpdate) {
+        let updatedAuthor = AuthorApi.updateAuthor(authorToUpdate);
+
+        Dispatcher.dispatch({
+            actionType: ActionTypes.UPDATE_AUTHOR,
+            author: updatedAuthor
         });
     }
 };
+
+module.exports = AuthorActions;
