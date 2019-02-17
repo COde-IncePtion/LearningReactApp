@@ -1,4 +1,7 @@
 "use strict";
+var _ = require('lodash');
+
+
 var authors = [
     {
         'id': '100',
@@ -31,6 +34,12 @@ var AuthorAPi = {
 
     getAuthorById: function (id) {
         return authors.find(author => author.id == id);
+    },
+
+    deleteAuthor: function (authorIdToDelete) {
+        return _.remove(authors, function (author) {
+            return author.id == authorIdToDelete;
+        });
     }
 
 };

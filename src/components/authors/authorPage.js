@@ -3,17 +3,23 @@ var AuthorStore = require('../../stores/authorStore');
 var AuthorsList = require('./authorsList');
 var Link = require('react-router').Link;
 
+
 var AuthorPage = React.createClass({
         getInitialState: function () {
             return {
-                authors: []
+                authors: AuthorStore.getAllAuthors()
             };
         },
         componentWillMount: function () {
-            this.setState({
-                authors: AuthorStore.getAllAuthors()
-            });
+            AuthorStore.addChangeListener(this.onChange);
         },
+        componentWillUnmount: function () {
+            AuthorStore.removeChangeListener(this.onChange);
+        },
+        onChange: function () {
+            this.setState({authors: AuthorStore.getAllAuthors()});
+        },
+
         render: function () {
             return (
                 <div>

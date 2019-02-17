@@ -3,6 +3,7 @@ var ActionTypes = require('../constants/actionTypes');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
+var _ = require('lodash');
 
 var _authors = [];
 
@@ -38,10 +39,20 @@ Dispatcher.register(function (action) {
         case ActionTypes.UPDATE_AUTHOR :
             let indexToUpdate = _authors.findIndex(author => author.id == action.author.id);
             _authors.splice(indexToUpdate, 1, action.author);
+            AuthorStore.emitChange();
             break;
 
         case ActionTypes.INITIALIZE_APP :
             _authors = action.authors;
+            break;
+
+        case ActionTypes.DELETE_AUTHOR :
+            _.remove(_authors, function (author) {
+                return author.id == action.authorId;
+            });
+            AuthorStore.emitChange();
+            break;
+        default:
             break;
     }
 })
