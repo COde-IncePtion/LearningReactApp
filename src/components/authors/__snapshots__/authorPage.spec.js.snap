@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should component snapshot 1`] = `
+<div>
+  <h1>
+    Authors
+  </h1>
+  <Link
+    activeClassName="active"
+    className="btn btn-primary"
+    to="addAuthor"
+  >
+    Add author
+  </Link>
+  <AuthorsList
+    authors={Array []}
+  />
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render header 1`] = `
+<div>
+  <ul
+    className="nav nav-pills"
+  >
+    <li
+      role="presentation"
+    >
+      <Link
+        activeClassName="active"
+        className=""
+        to="app"
+      >
+        Home
+      </Link>
+    </li>
+    <li
+      role="presentation"
+    >
+      <Link
+        activeClassName="active"
+        className=""
+        to="about"
+      >
+        About
+      </Link>
+    </li>
+    <li
+      role="presentation"
+    >
+      <Link
+        activeClassName="active"
+        className=""
+        to="authors"
+      >
+        Authors
+      </Link>
+    </li>
+  </ul>
+</div>
+`;
